@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- METADATOS PARA LA TARJETA DE WHATSAPP -->
     <meta property="og:title" content="📊 REPORTE DE AVANCE IO">
     <meta property="og:description" content="Toque aquí para registrar el progreso de la sede.">
-    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/automation/icon_automation.png">
+    <meta property="og:image"
+        content="https://tvidalsoluciones-dev.github.io/io-automation-reports/icon_automation.png">
     <meta property="og:type" content="website">
-    
+
     <title>IO AUTOMATION - Reporte</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f172a; /* Azul Muy Oscuro */
-            --accent: #38bdf8;  /* Celeste Eléctrico (Automation) */
+            --primary: #0f172a;
+            /* Azul Muy Oscuro */
+            --accent: #38bdf8;
+            /* Celeste Eléctrico (Automation) */
             --success: #10b981;
             --danger: #ef4444;
-            --bg: #020617;     /* Fondo Negro Profundo */
+            --bg: #020617;
+            /* Fondo Negro Profundo */
             --card-bg: #0f172a;
             --text: #f1f5f9;
         }
@@ -40,12 +45,21 @@
             padding: 25px;
             border-radius: 20px;
             text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
         }
 
-        .header h1 { font-size: 1.4rem; margin: 0; color: var(--accent); }
-        .header p { font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0; }
+        .header h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: var(--accent);
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 5px 0 0;
+        }
 
         .form-card {
             width: 100%;
@@ -56,13 +70,25 @@
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
-        .field { margin-bottom: 20px; }
-        label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+        .field {
+            margin-bottom: 20px;
+        }
 
-        input, textarea, select {
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea,
+        select {
             width: 100%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             padding: 15px;
             color: white;
@@ -84,6 +110,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1 id="sede-name">CARGANDO SEDE...</h1>
@@ -107,7 +134,8 @@
 
         <div class="field">
             <label>Novedades de Campo</label>
-            <textarea id="novedad" rows="4" placeholder="Escriba aquí cualquier obstáculo o avance crítico..."></textarea>
+            <textarea id="novedad" rows="4"
+                placeholder="Escriba aquí cualquier obstáculo o avance crítico..."></textarea>
         </div>
 
         <button class="btn-send" onclick="enviarReporte()">ENVIAR POR WHATSAPP</button>
@@ -129,14 +157,15 @@
             const nov = document.getElementById('novedad').value;
 
             const msg = `📊 *REPORTE IO AUTOMATION*\n` +
-                        `📍 *Sede:* ${sede.replace(/_/g, ' ')}\n` +
-                        `👷 *Encargado:* ${encargado}\n` +
-                        `📈 *Avance:* ${ava}%\n` +
-                        `⚡ *Estado:* ${est}\n` +
-                        `📝 *Nota:* ${nov || 'Sin novedades'}`;
+                `📍 *Sede:* ${sede.replace(/_/g, ' ')}\n` +
+                `👷 *Encargado:* ${encargado}\n` +
+                `📈 *Avance:* ${ava}%\n` +
+                `⚡ *Estado:* ${est}\n` +
+                `📝 *Nota:* ${nov || 'Sin novedades'}`;
 
             window.location.href = `https://wa.me/${tel}?text=${encodeURIComponent(msg)}`;
         }
     </script>
 </body>
+
 </html>
