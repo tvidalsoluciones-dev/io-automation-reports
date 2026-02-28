@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- METADATOS TÁCTICOS WHATSAPP (EL MAQUILLAJE) -->
-    <meta property="og:title" content="INFORME DE PROGRESO 📊">
-    <meta property="og:description" content="Toque aquí para registrar el avance de planta.">
-    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/reporte-icon-2.png">
+    <!-- METADATOS DE ELEGANCIA DEFINITIVA (MAQUILLAJE CORREGIDO) -->
+    <meta property="og:title" content="INFORME DE AVANCE IO 📊">
+    <meta property="og:description" content="Haga clic para registrar el progreso de campo.">
+    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/icon_final_io.jpg">
+    <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/reporte.html">
     <meta property="og:type" content="website">
 
-    <title>IO AUTOMATION - Sistema Orion</title>
+    <title>IO AUTOMATION - Reporte</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,8 +40,8 @@
             background: linear-gradient(135deg, #1e40af, #0f172a);
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .header h1 {
@@ -58,21 +59,22 @@
             border: 1px solid rgba(56, 189, 248, 0.2);
         }
 
-        .field {
-            margin-bottom: 20px;
-        }
-
         label {
             display: block;
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .field {
+            margin-bottom: 20px;
         }
 
         input,
-        textarea,
-        select {
+        select,
+        textarea {
             width: 100%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -99,39 +101,28 @@
 
 <body>
     <div class="header">
-        <h1 id="sede-name">REPORTE DE CAMPO</h1>
-        <p id="encargado-name">Cargando datos...</p>
+        <h1 id="sede-label">REPORTE DE CAMPO</h1>
+        <p id="encargado-label">Cargando datos...</p>
     </div>
     <div class="form-card">
-        <div class="field">
-            <label>Estado de Obra</label>
-            <select id="estado">
-                <option value="NORMAL">✅ PROGRESO NORMAL</option>
-                <option value="RETRASADO">⚠️ CON RETRASO</option>
-                <option value="DETENIDO">🛑 OBRA DETENIDA</option>
-            </select>
-        </div>
-        <div class="field">
-            <label>Avance Físico (%)</label>
-            <input type="number" id="avance" placeholder="0-100">
-        </div>
-        <div class="field">
-            <label>Novedades</label>
-            <textarea id="novedad" rows="4" placeholder="Obstáculos críticos..."></textarea>
-        </div>
-        <button class="btn-send" onclick="enviarReporte()">ENVIAR POR WHATSAPP</button>
+        <div class="field"><label>Estado</label><select id="estado">
+                <option value="NORMAL">✅ NORMAL</option>
+                <option value="RETRASADO">⚠️ RETRASADO</option>
+                <option value="DETENIDO">🛑 DETENIDO</option>
+            </select></div>
+        <div class="field"><label>Avance %</label><input type="number" id="avance"></div>
+        <div class="field"><label>Notas</label><textarea id="novedad" rows="4"></textarea></div>
+        <button class="btn-send" onclick="enviar()">ENVIAR POR WHATSAPP</button>
     </div>
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const s = params.get('s') || "SEDE";
-        const e = params.get('e') || "ADMIN";
-        const t = params.get('t') || "573023907622";
-        document.getElementById('sede-name').innerText = `SEDE: ${s.replace(/_/g, ' ')}`;
-        document.getElementById('encargado-name').innerText = `Encargado: ${e}`;
-        function enviarReporte() {
-            const ava = document.getElementById('avance').value;
-            const est = document.getElementById('estado').value;
-            const msg = `📊 *REPORTE IO*\n📍 *Sede:* ${s.replace(/_/g, ' ')}\n👷 *Encargado:* ${e}\n📈 *Avance:* ${ava}%\n📝 *Nota:* ${document.getElementById('novedad').value || 'Sin novedades'}`;
+        const p = new URLSearchParams(window.location.search);
+        const s = p.get('s') || "DESCONOCIDA";
+        const e = p.get('e') || "ADMIN";
+        const t = p.get('t') || "573023907622";
+        document.getElementById('sede-label').innerText = `SEDE: ${s.replace(/_/g, ' ')}`;
+        document.getElementById('encargado-label').innerText = `Encargado: ${e}`;
+        function enviar() {
+            const msg = `📊 *REPORTE IO*\n📍 *Sede:* ${s.replace(/_/g, ' ')}\n👷 *Encargado:* ${e}\n📈 *Avance:* ${document.getElementById('avance').value}%\n📝 *Nota:* ${document.getElementById('novedad').value || 'Sin novedades'}`;
             window.location.href = `https://wa.me/${t}?text=${encodeURIComponent(msg)}`;
         }
     </script>
