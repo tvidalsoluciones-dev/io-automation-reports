@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- EL "MAQUILLAJE" PARA WHATSAPP -->
+    <!-- EL PORTAL MAESTRO - EL MAQUILLAJE PARA WHATSAPP -->
     <meta property="og:title" content="PRESENTACIÓN PROFESIONAL 🤝">
     <meta property="og:description"
         content="Haga clic para conocer nuestra propuesta de servicios. Calidad y cumplimiento.">
@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/tarjeta_pro.html">
     <meta property="og:type" content="website">
 
-    <title>Presentación de Servicios</title>
+    <title>Portal Profesional de Servicios</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -33,11 +33,12 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            padding-bottom: 40px;
         }
 
         .hero {
             width: 100%;
-            height: 40vh;
+            height: 35vh;
             background: url('tarjeta_pro.jpg') center/cover;
             position: relative;
         }
@@ -48,50 +49,40 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 50%;
+            height: 60%;
             background: linear-gradient(to top, var(--bg), transparent);
         }
 
         .content {
-            width: 90%;
+            width: 92%;
             max-width: 450px;
             z-index: 10;
-            margin-top: -60px;
+            margin-top: -50px;
             text-align: center;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin: 0 auto 20px;
-            background: white;
-            padding: 10px;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin: 5px 0;
+        .info-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
         }
 
         .subtitle {
             color: var(--accent);
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .info-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            margin-top: 25px;
-            border: 1px solid #e2e8f0;
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin: 5px 0 15px 0;
         }
 
         .description {
@@ -101,35 +92,60 @@
             margin-bottom: 25px;
         }
 
-        .btn-contact {
+        /* Botonera de Navegación */
+        .button-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
             width: 100%;
-            background: #25d366;
-            color: white;
-            border: none;
             padding: 18px;
-            border-radius: 15px;
-            font-size: 1rem;
+            border-radius: 16px;
             font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
             transition: 0.3s;
+            box-sizing: border-box;
         }
 
-        .btn-contact:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.3);
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 15px rgba(30, 41, 59, 0.2);
+        }
+
+        .btn-accent {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-wa {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2);
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
         }
 
         .footer {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 0.75rem;
-            opacity: 0.5;
-            padding-bottom: 30px;
+            opacity: 0.4;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -138,28 +154,47 @@
     <div class="hero"></div>
     <div class="content">
         <div class="info-card">
-            <span class="subtitle" id="tag-servicios">Servicios Profesionales</span>
-            <h1 id="nombre-cliente">Hola, ¡mucho gusto!</h1>
-            <p class="description" id="texto-intro">Estamos comprometidos con brindarle la mejor solución técnica y
-                profesional para su proyecto.</p>
+            <span class="subtitle">Ecosistema Global de Servicios</span>
+            <h1 id="nombre-cliente">¡Hola!</h1>
+            <p class="description" id="texto-intro">Bienvenido a nuestro centro de gestión. Seleccione la opción que
+                mejor se adapte a su necesidad actual.</p>
 
-            <a href="#" id="btn-wa" class="btn-contact">HABLAR POR WHATSAPP</a>
+            <div class="button-stack">
+                <a href="#" id="link-portafolio" class="btn btn-primary">
+                    <span>📂</span> VER PORTAFOLIO Y PRECIOS
+                </a>
+
+                <a href="#" id="link-agenda" class="btn btn-accent">
+                    <span>📅</span> AGENDAR CITA O CONSULTA
+                </a>
+
+                <a href="#" id="btn-wa" class="btn btn-wa">
+                    <span>💬</span> CONTACTAR POR WHATSAPP
+                </a>
+            </div>
         </div>
 
-        <div class="footer">Diseño Digital Exclusivo</div>
+        <div class="footer">Infraestructura Digital Premium</div>
     </div>
 
     <script>
         const p = new URLSearchParams(window.location.search);
         const nom = p.get('n') || "Invitado";
         const emp = p.get('e') || "su proyecto";
-        const msg_base = p.get('m') || "Me interesa conocer sus servicios.";
-        const tel = p.get('t') || "573023907622"; // Teléfono default o del aliado
+        const tel = p.get('t') || "573023907622";
 
+        // Personalización de Bienvenida
         document.getElementById('nombre-cliente').innerText = `¡Hola, ${nom}!`;
-        document.getElementById('texto-intro').innerText = `Es un placer saludarle. Queremos presentarle nuestra propuesta personalizada para ${emp}. Quedamos atentos a sus dudas.`;
+        document.getElementById('texto-intro').innerText = `Es un placer saludarle de nuevo. Tenemos propuestas listas para ${emp}. ¿Por dónde desea comenzar?`;
 
-        const wa_url = `https://wa.me/${tel}?text=${encodeURIComponent('Hola, mi nombre es ' + nom + ' de ' + emp + '. ' + msg_base)}`;
+        // Construcción de Links Internos (Pasando los parámetros)
+        const paramsStr = `?n=${encodeURIComponent(nom)}&e=${encodeURIComponent(emp)}&t=${encodeURIComponent(tel)}`;
+
+        document.getElementById('link-portafolio').href = `portafolio.html${paramsStr}`;
+        document.getElementById('link-agenda').href = `agendar.html${paramsStr}`;
+
+        // Link directo a WA
+        const wa_url = `https://wa.me/${tel}?text=${encodeURIComponent('Hola, mi nombre es ' + nom + ' de ' + emp + '. Me gustaría conversar personalmente.')}`;
         document.getElementById('btn-wa').href = wa_url;
     </script>
 </body>
