@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MAQUILLAJE PUBLICITARIO PREMIUM -->
+    <meta property="og:title" content="PROPUESTA EXCLUSIVA IO 💎">
+    <meta property="og:description" content="Diseño y Automatización de Alto Nivel para su Proyecto.">
+    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/premium_ad.jpg">
+    <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/promocion.html">
+    <meta property="og:type" content="website">
+
+    <title>IO AUTOMATION - Propuesta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #38bdf8;
+            --bg: #020617;
+            --card-bg: #0f172a;
+            --text: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero {
+            width: 100%;
+            height: 60vh;
+            background: url('premium_ad.jpg') center/cover;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--bg));
+        }
+
+        .content {
+            width: 90%;
+            max-width: 500px;
+            z-index: 10;
+            margin-top: -50px;
+            text-align: center;
+        }
+
+        .badge {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: white;
+        }
+
+        p {
+            line-height: 1.6;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .cta-box {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            margin-top: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .btn-wa {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero"></div>
+    <div class="content">
+        <span class="badge">Propuesta Premium</span>
+        <h1 id="cliente-msg">Hola,</h1>
+        <p id="empresa-msg">Tenemos una solución de automatización diseñada específicamente para su visión.</p>
+
+        <div class="cta-box">
+            <label
+                style="font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Servicio
+                Sugerido</label>
+            <h2 id="servicio-msg" style="margin: 10px 0 20px 0;">Consultoría Master</h2>
+            <p style="font-size: 0.9rem; opacity: 0.7;">Haga clic abajo para agendar una sesión estratégica sin costo y
+                optimizar sus procesos industriales.</p>
+            <a href="#" id="btn-wa" class="btn-wa">MAS INFORMACIÓN POR WHATSAPP</a>
+        </div>
+    </div>
+
+    <script>
+        const p = new URLSearchParams(window.location.search);
+        const nom = p.get('n') || "Invitado";
+        const emp = p.get('e') || "su empresa";
+        const ser = p.get('s') || "Innovación IO";
+        const tel = p.get('t') || "573023907622";
+
+        document.getElementById('cliente-msg').innerText = `¡Hola, ${nom}!`;
+        document.getElementById('empresa-msg').innerText = `Tenemos una solución para ${emp} que llevará su productividad al siguiente nivel.`;
+        document.getElementById('servicio-msg').innerText = ser;
+
+        const msg = `💎 *INTERÉS EN PROPUESTA IO*\nHola Director, mi nombre es ${nom} de ${emp}. Me interesa saber más sobre: *${ser}*.`;
+        document.getElementById('btn-wa').href = `https://wa.me/${tel}?text=${encodeURIComponent(msg)}`;
+    </script>
+</body>
+
+</html>
