@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- METADATOS PARA LA TARJETA DE WHATSAPP -->
+    <meta property="og:title" content="📊 REPORTE DE AVANCE IO">
+    <meta property="og:description" content="Toque aquí para registrar el progreso de la sede.">
+    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/automation/icon_automation.png">
+    <meta property="og:type" content="website">
+    
+    <title>IO AUTOMATION - Reporte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a; /* Azul Muy Oscuro */
+            --accent: #38bdf8;  /* Celeste Eléctrico (Automation) */
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #020617;     /* Fondo Negro Profundo */
+            --card-bg: #0f172a;
+            --text: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 450px;
+            background: linear-gradient(135deg, #1e40af, #0f172a);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .header h1 { font-size: 1.4rem; margin: 0; color: var(--accent); }
+        .header p { font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0; }
+
+        .form-card {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .field { margin-bottom: 20px; }
+        label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: 18px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="sede-name">CARGANDO SEDE...</h1>
+        <p id="encargado-name">Identificando encargado...</p>
+    </div>
+
+    <div class="form-card">
+        <div class="field">
+            <label>Estado de Obra</label>
+            <select id="estado">
+                <option value="NORMAL">✅ PROGRESO NORMAL</option>
+                <option value="RETRASADO">⚠️ CON RETRASO</option>
+                <option value="DETENIDO">🛑 OBRA DETENIDA</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Avance Físico (%)</label>
+            <input type="number" id="avance" placeholder="0-100">
+        </div>
+
+        <div class="field">
+            <label>Novedades de Campo</label>
+            <textarea id="novedad" rows="4" placeholder="Escriba aquí cualquier obstáculo o avance crítico..."></textarea>
+        </div>
+
+        <button class="btn-send" onclick="enviarReporte()">ENVIAR POR WHATSAPP</button>
+    </div>
+
+    <script>
+        // Lógica de captura de Sede y Encargado desde el URL (Patrón ORION)
+        const params = new URLSearchParams(window.location.search);
+        const sede = params.get('s') || "DESCONOCIDA";
+        const encargado = params.get('e') || "ADMIN";
+        const tel = params.get('t') || "573000000000";
+
+        document.getElementById('sede-name').innerText = `SEDE: ${sede.replace(/_/g, ' ')}`;
+        document.getElementById('encargado-name').innerText = `Encargado: ${encargado}`;
+
+        function enviarReporte() {
+            const est = document.getElementById('estado').value;
+            const ava = document.getElementById('avance').value;
+            const nov = document.getElementById('novedad').value;
+
+            const msg = `📊 *REPORTE IO AUTOMATION*\n` +
+                        `📍 *Sede:* ${sede.replace(/_/g, ' ')}\n` +
+                        `👷 *Encargado:* ${encargado}\n` +
+                        `📈 *Avance:* ${ava}%\n` +
+                        `⚡ *Estado:* ${est}\n` +
+                        `📝 *Nota:* ${nov || 'Sin novedades'}`;
+
+            window.location.href = `https://wa.me/${tel}?text=${encodeURIComponent(msg)}`;
+        }
+    </script>
+</body>
+</html>
