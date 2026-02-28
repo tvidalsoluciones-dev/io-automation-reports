@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- METADATOS PARA LA TARJETA DE WHATSAPP -->
+
+    <!-- METADATOS DE ELEGANCIA PARA WHATSAPP (EL MAQUILLAJE) -->
     <meta property="og:title" content="📊 REPORTE DE AVANCE IO">
     <meta property="og:description" content="Toque aquí para registrar el progreso de la sede.">
     <meta property="og:image"
-        content="https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/industry.svg">
-    <meta property="og:image:alt" content="Icono de Industria">
+        content="https://tvidalsoluciones-dev.github.io/io-automation-reports/icon_automation.png">
     <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/reporte.html">
     <meta property="og:type" content="website">
 
@@ -18,13 +18,8 @@
     <style>
         :root {
             --primary: #0f172a;
-            /* Azul Muy Oscuro */
             --accent: #38bdf8;
-            /* Celeste Eléctrico (Automation) */
-            --success: #10b981;
-            --danger: #ef4444;
             --bg: #020617;
-            /* Fondo Negro Profundo */
             --card-bg: #0f172a;
             --text: #f1f5f9;
         }
@@ -46,21 +41,20 @@
             background: linear-gradient(135deg, #1e40af, #0f172a);
             padding: 25px;
             border-radius: 20px;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .header h1 {
             font-size: 1.4rem;
-            margin: 0;
             color: var(--accent);
+            margin: 0;
         }
 
         .header p {
             font-size: 0.9rem;
             opacity: 0.8;
-            margin: 5px 0 0;
+            margin-top: 5px;
         }
 
         .form-card {
@@ -95,7 +89,6 @@
             padding: 15px;
             color: white;
             font-size: 1rem;
-            outline: none;
         }
 
         .btn-send {
@@ -115,8 +108,8 @@
 
 <body>
     <div class="header">
-        <h1 id="sede-name">CARGANDO SEDE...</h1>
-        <p id="encargado-name">Identificando encargado...</p>
+        <h1 id="sede-name">REPORTE DE CAMPO</h1>
+        <p id="encargado-name">Identificando proyecto...</p>
     </div>
 
     <div class="form-card">
@@ -136,19 +129,17 @@
 
         <div class="field">
             <label>Novedades de Campo</label>
-            <textarea id="novedad" rows="4"
-                placeholder="Escriba aquí cualquier obstáculo o avance crítico..."></textarea>
+            <textarea id="novedad" rows="4" placeholder="Detalles críticos..."></textarea>
         </div>
 
         <button class="btn-send" onclick="enviarReporte()">ENVIAR POR WHATSAPP</button>
     </div>
 
     <script>
-        // Lógica de captura de Sede y Encargado desde el URL (Patrón ORION)
         const params = new URLSearchParams(window.location.search);
         const sede = params.get('s') || "DESCONOCIDA";
         const encargado = params.get('e') || "ADMIN";
-        const tel = params.get('t') || "573000000000";
+        const tel = params.get('t') || "573023907622"; // Backup del número del Director
 
         document.getElementById('sede-name').innerText = `SEDE: ${sede.replace(/_/g, ' ')}`;
         document.getElementById('encargado-name').innerText = `Encargado: ${encargado}`;
