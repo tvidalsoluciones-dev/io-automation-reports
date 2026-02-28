@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- METADATOS INDUSTRIALES -->
+    <meta property="og:title" content="⚠️ PERMISO DE TRABAJO EN ALTURAS">
+    <meta property="og:description" content="Formulario de control y seguridad industrial en tiempo real.">
+    <meta property="og:image"
+        content="https://tvidalsoluciones-dev.github.io/io-automation-reports/permiso_alturas.jpg">
+    <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/permiso_alturas.html">
+    <meta property="og:type" content="website">
+
+    <title>SST - Permiso de Alturas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --secondary: #263238;
+            --bg: #f5f5f5;
+            --border: #cfd8dc;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: #212121;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            width: 100%;
+            height: 200px;
+            background: url('permiso_alturas.jpg') center/cover;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .header-overlay {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px 20px;
+            box-sizing: border-box;
+        }
+
+        .header-overlay h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .form-card {
+            width: 95%;
+            max-width: 600px;
+            background: white;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-top: 5px solid var(--primary);
+        }
+
+        .section {
+            padding: 25px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #546e7a;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background: #fafafa;
+        }
+
+        /* Checklist styles */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #eceff1;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-label {
+            font-size: 0.95rem;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            accent-color: var(--primary);
+        }
+
+        /* Signature Area */
+        #signature-pad {
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            background: #fff;
+            width: 100%;
+            height: 150px;
+            cursor: crosshair;
+        }
+
+        .signature-controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .btn-clear {
+            background: #bdbdbd;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit:hover {
+            background: #b71c1c;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #78909c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-overlay">
+            <h1>PERMISO DE TRABAJO EN ALTURAS</h1>
+            <p style="margin: 5px 0 0 0; font-size: 0.85rem; opacity: 0.9;">Control de Seguridad y Salud en el Trabajo
+                (SST)</p>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <!-- 1. IDENTIFICACIÓN -->
+        <div class="section">
+            <div class="section-title"><span>❶</span> Datos del Trabajador</div>
+            <div class="field">
+                <label>Nombre Completo</label>
+                <input type="text" id="nombre" placeholder="Nombre completo del operario">
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <div class="field" style="flex:1;">
+                    <label>Cédula/ID</label>
+                    <input type="text" id="cedula" placeholder="No. Identificación">
+                </div>
+                <div class="field" style="width: 100px;">
+                    <label>RH</label>
+                    <input type="text" id="rh" placeholder="P/M">
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. DATOS DE LA TAREA -->
+        <div class="section">
+            <div class="section-title"><span>❷</span> Descripción de la Tarea</div>
+            <div class="field">
+                <label>Ubicación / Área</label>
+                <input type="text" id="ubicacion" placeholder="Ej: Planta 2, Tanque 04">
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <div class="field" style="flex:1;">
+                    <label>Altura Aproximada (M)</label>
+                    <input type="number" id="altura" placeholder="Ej: 5.5">
+                </div>
+                <div class="field" style="flex:1;">
+                    <label>Duración Estimada</label>
+                    <input type="text" id="duracion" placeholder="Ej: 2 Horas">
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. CHECKLIST EPP -->
+        <div class="section">
+            <div class="section-title"><span>❸</span> Inspección de Equipos (EPP)</div>
+            <div class="checklist-item">
+                <div class="checklist-label">Arnés de Cuerpo Completo</div>
+                <input type="checkbox" id="epp1" class="epp-item">
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-label">Casco con Barbuquejo</div>
+                <input type="checkbox" id="epp2" class="epp-item">
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-label">Eslinga de Posicionamiento</div>
+                <input type="checkbox" id="epp3" class="epp-item">
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-label">Línea de Vida Certificada</div>
+                <input type="checkbox" id="epp4" class="epp-item">
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-label">Mosquetones y Conectores</div>
+                <input type="checkbox" id="epp5" class="epp-item">
+            </div>
+        </div>
+
+        <!-- 4. FIRMA Y COMPROMISO -->
+        <div class="section">
+            <div class="section-title"><span>❹</span> Firma de Responsabilidad</div>
+            <p style="font-size: 0.8rem; margin-bottom: 15px; color: #607d8b;">Declaro que he verificado mis equipos y
+                me encuentro en condiciones óptimas para realizar la labor.</p>
+            <canvas id="signature-pad"></canvas>
+            <div class="signature-controls">
+                <button class="btn-clear" onclick="clearSignature()">Limpiar Firma</button>
+            </div>
+        </div>
+
+        <button class="btn-submit" onclick="enviarPermiso()">GENERAR PERMISO Y NOTIFICAR</button>
+    </div>
+
+    <div class="footer">
+        © 2026 IO AUTOMATION SYSTEMS<br>Digitalización de Procesos Críticos
+    </div>
+
+    <script>
+        // Lógica de Firma (Canvas)
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        let writing = false;
+
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const getPos = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.clientX || e.touches[0].clientX;
+            const clientY = e.clientY || e.touches[0].clientY;
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        canvas.addEventListener('touchstart', (e) => { writing = true; ctx.beginPath(); ctx.moveTo(getPos(e).x, getPos(e).y); e.preventDefault(); });
+        canvas.addEventListener('touchmove', (e) => { if (!writing) return; ctx.lineTo(getPos(e).x, getPos(e).y); ctx.stroke(); e.preventDefault(); });
+        canvas.addEventListener('mousedown', (e) => { writing = true; ctx.beginPath(); ctx.moveTo(getPos(e).x, getPos(e).y); });
+        canvas.addEventListener('mousemove', (e) => { if (!writing) return; ctx.lineTo(getPos(e).x, getPos(e).y); ctx.stroke(); });
+        window.addEventListener('mouseup', () => writing = false);
+        window.addEventListener('touchend', () => writing = false);
+
+        function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+        // Lógica de Envío
+        function enviarPermiso() {
+            const nom = document.getElementById('nombre').value;
+            const ced = document.getElementById('cedula').value;
+            const ubi = document.getElementById('ubicacion').value;
+            const alt = document.getElementById('altura').value;
+
+            if (!nom || !ced || !ubi) { alert("Complete los datos de identificación y ubicación."); return; }
+
+            // Capturar estado de EPP
+            let eppStatus = "";
+            document.querySelectorAll('.epp-item').forEach((item, index) => {
+                eppStatus += (item.checked ? "✅" : "❌") + " EPP-" + (index + 1) + " ";
+            });
+
+            // LOCALIZACIÓN (Opcional - Simulación)
+            const coords = "Capturada vía GPS-IO";
+
+            const msg = `━━━━━━━━━━━━━━━\n` +
+                `⚠️ *PERMISO DE TRABAJO EN ALTURAS*\n` +
+                `━━━━━━━━━━━━━━━\n\n` +
+                `👷 *OPERARIO:* ${nom}\n` +
+                `🆔 *CÉDULA:* ${ced}\n` +
+                `📍 *ÁREA:* ${ubi}\n` +
+                `📏 *ALTURA:* ${alt} Metros\n\n` +
+                `🛡️ *EPP CHECKLIST:*\n` +
+                `${eppStatus}\n\n` +
+                `✍️ *FIRMA:* Digitalizada\n` +
+                `🛰️ *GEO:* ${coords}\n\n` +
+                `*Permiso AUTORIZADO por el sistema.*`;
+
+            const tel_supervisor = "573023907622"; // Representa al centro de control
+            window.location.href = `https://wa.me/${tel_supervisor}?text=${encodeURIComponent(msg)}`;
+        }
+    </script>
+</body>
+
+</html>
