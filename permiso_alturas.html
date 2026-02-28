@@ -15,6 +15,10 @@
 
     <title>SST - Permiso de Alturas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- LIBRERÍAS PARA PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --primary: #d32f2f;
@@ -179,6 +183,24 @@
             background: #b71c1c;
         }
 
+        .btn-pdf {
+            width: 100%;
+            padding: 15px;
+            background: #455a64;
+            color: white;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .btn-pdf:hover {
+            background: #263238;
+        }
+
         .footer {
             padding: 20px;
             text-align: center;
@@ -273,6 +295,7 @@
         </div>
 
         <button class="btn-submit" onclick="enviarPermiso()">GENERAR PERMISO Y NOTIFICAR</button>
+        <button class="btn-pdf" onclick="descargarPDF()">📥 DESCARGAR ACTA FIRMADA (PDF)</button>
     </div>
 
     <div class="footer">
@@ -343,6 +366,64 @@
 
             const tel_supervisor = "573023907622"; // Representa al centro de control
             window.location.href = `https://wa.me/${tel_supervisor}?text=${encodeURIComponent(msg)}`;
+        }
+
+        async function descargarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Título
+            doc.setFontSize(18);
+            doc.setTextColor(211, 47, 47); // Rojo primario
+            doc.text("ACTA DE PERMISO DE TRABAJO EN ALTURAS", 105, 20, { align: "center" });
+
+            doc.setFontSize(10);
+            doc.setTextColor(100);
+            doc.text("Sistema de Gestión de Seguridad y Salud en el Trabajo (SST)", 105, 28, { align: "center" });
+
+            // Datos Operario
+            doc.setFontSize(12);
+            doc.setTextColor(0);
+            doc.text("1. DATOS DEL TRABAJADOR", 20, 45);
+            doc.setFontSize(10);
+            doc.text(`Nombre: ${document.getElementById('nombre').value}`, 25, 55);
+            doc.text(`Cédula: ${document.getElementById('cedula').value}`, 25, 62);
+            doc.text(`RH: ${document.getElementById('rh').value}`, 120, 62);
+
+            // Datos Tarea
+            doc.setFontSize(12);
+            doc.text("2. DESCRIPCIÓN DE LA TAREA", 20, 75);
+            doc.setFontSize(10);
+            doc.text(`Ubicación: ${document.getElementById('ubicacion').value}`, 25, 85);
+            doc.text(`Altura: ${document.getElementById('altura').value} m`, 25, 92);
+
+            // Checklist
+            doc.setFontSize(12);
+            doc.text("3. INSPECCIÓN DE EQUIPOS", 20, 105);
+            let y = 115;
+            document.querySelectorAll('.checklist-item').forEach(item => {
+                const label = item.querySelector('.checklist-label').innerText;
+                const checked = item.querySelector('input').checked ? "[ SI ]" : "[ NO ]";
+                doc.setFontSize(10);
+                doc.text(`${label}: ${checked}`, 25, y);
+                y += 7;
+            });
+
+            // Firma (Captura el Canvas)
+            doc.setFontSize(12);
+            doc.text("4. FIRMA DEL OPERARIO", 20, y + 15);
+
+            const signatureCanvas = document.getElementById('signature-pad');
+            const signatureImg = signatureCanvas.toDataURL("image/png");
+            doc.addImage(signatureImg, 'PNG', 20, y + 20, 80, 30);
+
+            doc.setFontSize(8);
+            doc.text("Este documento es una representación digital del compromiso de seguridad.", 20, y + 60);
+            doc.text(`Fecha de generación: ${new Date().toLocaleString()}`, 20, y + 65);
+
+            // Guardar
+            const safeName = document.getElementById('nombre').value.replace(/\s+/g, '_') || "Operario";
+            doc.save(`Permiso_Alturas_${safeName}.pdf`);
         }
     </script>
 </body>
