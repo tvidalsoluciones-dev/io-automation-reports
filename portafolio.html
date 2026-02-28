@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MAQUILLAJE DE PORTAFOLIO PREMIUM -->
+    <meta property="og:title" content="CATÁLOGO DE SERVICIOS PREMIER 💎">
+    <meta property="og:description" content="Explore nuestras soluciones y solicite su presupuesto al instante.">
+    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/portafolio.jpg">
+    <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/portafolio.html">
+    <meta property="og:type" content="website">
+
+    <title>Portafolio de Servicios Profesionales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #38bdf8;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --secondary: #64748b;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding-bottom: 50px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e40af, #0f172a);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.8;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: -30px auto 0;
+            z-index: 10;
+            position: relative;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .service-price {
+            background: #dcfce7;
+            color: #166534;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-order {
+            width: 100%;
+            padding: 15px;
+            background: #25d366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-order:hover {
+            filter: brightness(1.1);
+        }
+
+        .client-welcome {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: white;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .client-welcome b {
+            font-weight: 700;
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="client-welcome" id="welcome-msg">¡Hola! Es un gusto atenderle.</div>
+        <h1>PORTAFOLIO DE SERVICIOS</h1>
+        <p>Soluciones de ingeniería y diseño a su medida.</p>
+    </div>
+
+    <div class="container">
+        <!-- Servicio 1 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">⚡ Automatización Base</div>
+                <div class="service-price">$850.000 COP</div>
+            </div>
+            <p class="service-desc">Optimización de procesos para pequeñas plantas. Incluye sensores críticos y panel de
+                control básico.</p>
+            <a href="#" class="btn-order" onclick="ordenar('Automatización Base', '$850.000')">SOLICITAR COTIZACIÓN</a>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">📱 Portal de WhatsApp Pro</div>
+                <div class="service-price">$250.000 COP</div>
+            </div>
+            <p class="service-desc">Transformación de su comunicación comercial. Tarjeta visual personalizada y landing
+                page de contacto.</p>
+            <a href="#" class="btn-order" onclick="ordenar('Portal de WhatsApp Pro', '$250.000')">SOLICITAR AHORA</a>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="service-card">
+            <div class="service-header">
+                <div class="service-title">🔬 Consultoría Técnica</div>
+                <div class="service-price">$120.000 / H</div>
+            </div>
+            <p class="service-desc">Diagnóstico profundo de problemas operativos y diseño de ruta de solución (Módulo
+                RADIX).</p>
+            <a href="#" class="btn-order" onclick="ordenar('Consultoría Técnica', '$120.000/H')">AGENDAR SESIÓN</a>
+        </div>
+    </div>
+
+    <script>
+        const p = new URLSearchParams(window.location.search);
+        const nom = p.get('n') || "Visitante";
+        const emp = p.get('e') || "su proyecto";
+        const tel = p.get('t') || "573023907622";
+
+        document.getElementById('welcome-msg').innerHTML = `¡Hola, <b>${nom}</b>! Bienvenido a nuestro catálogo.`;
+
+        function ordenar(servicio, precio) {
+            const msg = `━━━━━━━━━━━━━━━\n` +
+                `🛒 *ÓRDEN DE INTERÉS*\n` +
+                `━━━━━━━━━━━━━━━\n\n` +
+                `👤 *Cliente:* ${nom}\n` +
+                `🏢 *Empresa:* ${emp}\n\n` +
+                `💎 *Servicio:* ${servicio}\n` +
+                `💰 *Referencia:* ${precio}\n\n` +
+                `Me gustaría recibir más información para proceder con este servicio.`;
+
+            window.location.href = `https://wa.me/${tel}?text=${encodeURIComponent(msg)}`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MAQUILLAJE DE AGENDAMIENTO -->
+    <meta property="og:title" content="AGENDA DE CITAS ESTRATÉGICAS 📅">
+    <meta property="og:description"
+        content="Reserve un espacio en nuestra agenda profesional para discutir su proyecto.">
+    <meta property="og:image" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/agendar.jpg">
+    <meta property="og:url" content="https://tvidalsoluciones-dev.github.io/io-automation-reports/agendar.html">
+    <meta property="og:type" content="website">
+
+    <title>Agendar Cita - Consultoría</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #38bdf8;
+            --bg: #ffffff;
+            --card-bg: #f8fafc;
+            --text: #1e293b;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .header-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-box h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .header-box p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .field {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 15px;
+            color: var(--primary);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .btn-book {
+            width: 100%;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-book:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="header-box">
+            <h1>AGENDAR CONSULTA</h1>
+            <p>Por favor, suministre sus datos de contacto para coordinar nuestra reunión.</p>
+        </div>
+
+        <div class="field">
+            <label>Su Nombre Completo</label>
+            <input type="text" id="nombre" placeholder="Ej: Juan Pérez">
+        </div>
+
+        <div class="field">
+            <label>Tipo de Proyecto</label>
+            <select id="tipo">
+                <option value="Automatización">🛠️ AUTOMATIZACIÓN</option>
+                <option value="Mantenimiento">⚙️ MANTENIMIENTO</option>
+                <option value="Publicidad">📱 MARKETING WHATSAPP</option>
+                <option value="Otro">❓ OTRO ASUNTO</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>WhatsApp de Contacto</label>
+            <input type="tel" id="telefono" placeholder="Ej: 300 000 0000">
+        </div>
+
+        <div class="field">
+            <label>Motivo del Agendamiento</label>
+            <textarea id="motivo" rows="3" placeholder="Breve descripción del interés..."></textarea>
+        </div>
+
+        <button class="btn-book" onclick="agendar()">CONFIRMAR SOLICITUD</button>
+    </div>
+
+    <p class="footer-note">Sistema de Agendamiento Profesional • Cali, Colombia</p>
+
+    <script>
+        const p = new URLSearchParams(window.location.search);
+        const tel_destino = p.get('t') || "573023907622";
+
+        function agendar() {
+            const nom = document.getElementById('nombre').value;
+            const tip = document.getElementById('tipo').value;
+            const con = document.getElementById('telefono').value;
+            const mot = document.getElementById('motivo').value;
+
+            if (!nom || !con) { alert("Por favor complete su nombre y contacto."); return; }
+
+            const msg = `━━━━━━━━━━━━━━━\n` +
+                `📅 *NUEVA SOLICITUD DE CITA*\n` +
+                `━━━━━━━━━━━━━━━\n\n` +
+                `👤 *Interesado:* ${nom}\n` +
+                `📱 *Contacto:* ${con}\n\n` +
+                `🔎 *Área:* ${tip}\n` +
+                `📝 *Motivo:* ${mot || 'Sin descripción'}\n\n` +
+                `_Por favor confirmar disponibilidad._`;
+
+            window.location.href = `https://wa.me/${tel_destino}?text=${encodeURIComponent(msg)}`;
+        }
+    </script>
+</body>
+
+</html>
